@@ -1,9 +1,11 @@
 # 单词听写小程序
 
 #### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+越来越意识到英语的重要性，毕业以后没了应付考试的反感，渐渐的感觉英语有趣了起来。单词量已经见底了，所以得重新开始记单词，因为没有找到合适的听写软件，于是自己写了一个。小程序开发起来快捷，成本较低，所以选择了做微信小程序版的单词听写软件。
+
+单词听写小程序做的很简单，之前做过了一版，已经上线使用了一段时间，并且积累了三千多用户，这是第二版。
+
+开源的目的是希望听写小程序越来越好用，大家能定制自己的听写小程序。想入门微信小程序开发的朋友也能用它练练手，因为它功能真的很简单。
 
 #### 软件架构
 软件架构说明
@@ -28,12 +30,4 @@
 3. 提交代码
 4. 新建 Pull Request
 
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+6. https://gitee.com/gitee-stars/)
