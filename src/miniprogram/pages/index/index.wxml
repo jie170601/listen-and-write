@@ -62,6 +62,55 @@
           <view class="weui-cell__bd">标题文字</view>
           <view class="weui-cell__ft">说明文字</view>
       </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
     </view>
 
     <view class="weui-cells">
