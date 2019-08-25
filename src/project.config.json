@@ -8,9 +8,9 @@
 	"libVersion": "2.4.0",
 	"projectname": "%E5%8D%95%E8%AF%8D%E5%90%AC%E5%86%99",
 	"scripts": {
-		"beforeCompile": "npm run tsc",
-		"beforePreview": "npm run tsc",
-		"beforeUpload": "npm run tsc"
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
 	},
 	"setting": {},
 	"appid": "wx491dc57f6afba2ab",
