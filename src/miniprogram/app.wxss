@@ -1,4 +1,8 @@
 /**app.wxss**/
+
+/**引入微信UI库**/
+@import "weui.wxss";
+
 .container {
   height: 100%;
   display: flex;
