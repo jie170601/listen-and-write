@@ -1,13 +1,85 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="page">
+
+  <view class="page__hd">
+    <label>删除</label>
+    <label>添加</label>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="page__bd">
+
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <text class="fa fa-folder"></text>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入分组名" />
+      </view>
+    </view>
+  </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-folder"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-folder-open"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入单词"/>
+          </view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <text class="fa fa-file-text-o"></text>
+          </view>
+          <view class="weui-cell__bd">标题文字</view>
+          <view class="weui-cell__ft">说明文字</view>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="单词间用,隔开" style="height: 3.3em" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd add-words">
+          <label>批量添加单词</label>
+        </view>
+      </view>
+    </view>
+    
   </view>
 </view>

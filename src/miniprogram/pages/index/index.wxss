@@ -1,21 +1,39 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.page__hd{
+  height:96rpx;
+  border-bottom:1px solid #D5D5D5;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.page__hd label{
+  font-size: 34rpx;
+  float:right;
+  margin-right:20rpx;
+  margin-top:23rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.weui-cells{
+  margin-top:0;
+  font-size: 34rpx;
 }
-
-.usermotto {
-  margin-top: 200px;
+.weui-cells:before {
+  top: 0;
+  border-top:0;
+}
+.fa{
+  font-size:48rpx;
+  width:48rpx;
+  height:48rpx;
+}
+.weui-cell__bd{
+  padding-left:20rpx;
+}
+.fa-file-text-o{
+  color:#999;
+}
+.weui-input{
+  width:100%;
+  height:48rpx;
+  min-height:48rpx;
+  line-height:48rpx;
+}
+.add-words{
+  text-align: center;
 }

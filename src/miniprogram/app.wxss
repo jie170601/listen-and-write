@@ -3,6 +3,8 @@
 /**引入微信UI库**/
 @import "weui.wxss";
 
+/**引入font awesome字体库**/
+@import "font-awesome.wxss";
 .container {
   height: 100%;
   display: flex;
