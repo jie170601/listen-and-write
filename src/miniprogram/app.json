@@ -1,13 +1,33 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "单词听写",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": { 
+    "color": "#353535",
+    "selectedColor": "#09BB07",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "/images/icon-main-active.png",
+        "iconPath": "/images/icon-main.png",
+        "pagePath": "pages/index/index",
+        "text": "听写"
+      },
+      {
+        "selectedIconPath": "/images/icon-setting-active.png",
+        "iconPath": "/images/icon-setting.png",
+        "pagePath": "pages/setting/setting",
+        "text": "设置"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }
