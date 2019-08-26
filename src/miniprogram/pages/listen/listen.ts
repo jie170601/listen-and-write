@@ -30,28 +30,12 @@ Page({
   data: {
     state:StateEnum,
     curState:StateEnum.STOP,
-    showPicker:false,
     downloadCount:0,
     playCount:0,
-    /**
-     * 默认单词列表选择器选中第一个选项
-     */
-    pickerIndex:[0],
     wordGroup:new WordGroup(),
-    /**
-     * 这里遇到一个坑
-     * 选择器的数据必须在data里就赋值完成
-     * 去代码里再赋值回造成默认选择失效
-     */
-    wordGroupList: StorageUtil.getWordGroup(),
+    wordGroupList:new Array <WordGroup>(),
     showTopTips:false,
     errMsg:''
-  },
-  //事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
   },
   onLoad(options:any) {
     let groupid:string = options.groupid
@@ -72,25 +56,6 @@ Page({
     this.setData!({
       wordGroup: wordGroup,
       wordGroupList: wordGroupList
-    })
-  },
-  selectList(){
-    let showPicker:boolean = !this.data.showPicker
-    this.setData!({
-      showPicker: showPicker
-    })
-    // let curNumber:number = this.data!.curNumber+1
-    // this.setData!({
-    //   curNumber:curNumber
-    // })
-    // console.log(curNumber)
-  },
-  bindChange(e:any){
-    console.log(e)
-    let wordGroup: WordGroup = this.data.wordGroupList[e.detail.value[0]]
-    this.setData!({
-      pickerIndex: e.detail.value,
-      wordGroup:wordGroup
     })
   },
   translateState(state:StateEnum){

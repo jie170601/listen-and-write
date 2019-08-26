@@ -22,6 +22,8 @@ export class AudioUtil{
   private proccess:Function
   //出错的回调，没参数
   private error:Function
+  //播放完成的回调
+  private end:Function
 
   /**
    * 初始化各个属性
@@ -32,6 +34,7 @@ export class AudioUtil{
     this.paused = true
     this.proccess = function(){}
     this.error = function(){}
+    this.end = function(){}
   }
 
   /**
@@ -46,6 +49,9 @@ export class AudioUtil{
   public setError(error:Function):void{
     this.error = error
   }
+  public setEnd(end:Function):void{
+    this.end = end
+  }
 
   /**
    * 准备开始播放
@@ -54,8 +60,7 @@ export class AudioUtil{
    */
   public ready():void{
     (async () => {
-      console.log("开始播放音频")
-      this.cur = 0
+      this.cur = 1
       for (let i = 0; i < this.paths.length; i++) {
         this.proccess(this.cur++)
         for (let j = 0; j < 3; j++) {
@@ -63,7 +68,7 @@ export class AudioUtil{
             innerAudioContext.destroy()
             innerAudioContext = wx.createInnerAudioContext()
             this.error()
-            break
+            return
           }
           if (j < 3 - 1) {
             await this.delay(2000)
@@ -73,7 +78,7 @@ export class AudioUtil{
           await this.delay(3000)
         }
       }
-      console.log("音频播放完成")
+      this.end()
     })()
   }
 
