@@ -12,7 +12,9 @@
 		"beforePreview": "",
 		"beforeUpload": ""
 	},
-	"setting": {},
+	"setting": {
+		"newFeature": true
+	},
 	"appid": "wx491dc57f6afba2ab",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},

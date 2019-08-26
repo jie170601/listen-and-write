@@ -13,3 +13,21 @@ const formatNumber = (n: number) => {
   const str = n.toString()
   return str[1] ? str : '0' + str
 }
+
+export function showErrorMsg(msg:string){
+  wx.showToast({
+    title: msg,
+    icon: 'none',
+    duration: 2000
+  })
+}
+
+/**
+ * 生成重复概率非常低的UUID
+ */
+export function guid() {
+  function S4() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+  }
+  return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4())
+}

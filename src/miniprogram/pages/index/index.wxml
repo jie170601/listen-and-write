@@ -1,134 +1,102 @@
 <!--index.wxml-->
 <view class="page">
 
-  <view class="page__hd">
-    <label>删除</label>
-    <label>添加</label>
+  <view class="page__hd"  wx:if="{{curState===State.WORD_UNFOLD_STATE}}">
+    <label bindtap="toAddGroup">删除</label>
+    <label bindtap="toAddGroup">添加</label>
+  </view>
+
+  <view class="page__hd"  wx:if="{{curState===State.ADD_GROUP_STATE}}">
+    <label bindtap="saveAddGroup">保存</label>
+    <label bindtap="cancelAddGroup">取消</label>
+  </view>
+
+  <view class="page__hd"  wx:if="{{curState===State.WORD_FOLD_STATE}}">
+    <label bindtap="toAddGroup">删除</label>
+    <label bindtap="toAddWord">添加</label>
+  </view>
+
+  <view class="page__hd"  wx:if="{{curState===State.ADD_WORD_STATE}}">
+    <label bindtap="saveAddWord">保存</label>
+    <label bindtap="cancelAddWord">取消</label>
+  </view>
+
+  <view class="page__hd"  wx:if="{{curState===State.BATCH_ADD_STATE}}">
+    <label bindtap="saveAddWords">保存</label>
+    <label bindtap="cancelAddWords">取消</label>
   </view>
 
   <view class="page__bd">
 
-  <view class="weui-cells">
+  <view class="weui-cells" wx:if="{{curState===State.ADD_GROUP_STATE}}">
     <view class="weui-cell">
       <view class="weui-cell__hd">
         <text class="fa fa-folder"></text>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入分组名" />
+        <input class="weui-input" placeholder="请输入分组名" bindinput="addGroupNameChanged"/>
       </view>
     </view>
   </view>
 
-    <view class="weui-cells">
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-folder"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-    </view>
+  <view wx:for="{{wordGroupList}}" wx:key="{{id}}">
 
-    <view class="weui-cells">
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-folder-open"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
+  <view class="weui-cells" wx:if="{{item.id!==groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="fa fa-folder"></text>
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+        <view class="weui-cell__ft">{{item.count}}</view>
     </view>
+  </view>
 
-    <view class="weui-cells">
-      <view class="weui-cell">
+  <view class="weui-cells" wx:if="{{curState!==State.WORD_UNFOLD_STATE&&item.id===groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="fa fa-folder-open"></text>
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+        <view class="weui-cell__ft">
+          <text class="fa fa-play-circle-o" style='color:#09BB07;'></text>
+        </view>
+    </view>
+  </view>
+
+    <view class="weui-cells" wx:if="{{curState!==State.WORD_UNFOLD_STATE&&item.id===groupid}}">
+      <view class="weui-cell" wx:if="{{curState===State.ADD_WORD_STATE}}">
           <view class="weui-cell__hd">
             <text class="fa fa-file-text-o"></text>
           </view>
           <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入单词"/>
+            <input class="weui-input" placeholder="请输入单词" bindinput="addWordChanged" id="{{item.id}}"/>
           </view>
       </view>
-      <view class="weui-cell">
+      <view class="weui-cell" wx:for="{{item.list}}" wx:key="{{word}}" wx:for-item="word">
           <view class="weui-cell__hd">
             <text class="fa fa-file-text-o"></text>
           </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
-      </view>
-      <view class="weui-cell">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">标题文字</view>
-          <view class="weui-cell__ft">说明文字</view>
+          <view class="weui-cell__bd">{{word}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
     </view>
 
-    <view class="weui-cells">
+    <view class="weui-cells" wx:if="{{curState===State.BATCH_ADD_STATE&&item.id===groupid}}">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="单词间用,隔开" style="height: 3.3em" />
-          <view class="weui-textarea-counter">0/200</view>
+          <textarea class="weui-textarea" placeholder="单词间用,隔开" style="height: 3.3em" bindinput="textAreaInput" value="{{textAreaValue}}" maxlength="2000"/>
+          <view class="weui-textarea-counter">{{textAreaCount}}/2000</view>
         </view>
       </view>
     </view>
 
-    <view class="weui-cells">
+    <view class="weui-cells" wx:if="{{curState===State.WORD_FOLD_STATE&&item.id===groupid}}">
       <view class="weui-cell">
-        <view class="weui-cell__bd add-words">
+        <view class="weui-cell__bd add-words" bindtap="toAddWords">
           <label>批量添加单词</label>
         </view>
       </view>
     </view>
-    
+    </view>
   </view>
 </view>
