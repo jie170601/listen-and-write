@@ -78,3 +78,13 @@ page{
 .toolbar{
   height:96rpx;
 }
+.progress-bar{
+  position:relative;
+  width:100%;
+}
+.progress-bar progress{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+}

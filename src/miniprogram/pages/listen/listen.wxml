@@ -11,11 +11,14 @@
   </view>
 
   <view class="page__bd">
-    <view class="word">下载中：{{curNumber}}%</view>
+    <view class="word">下载中：{{downloadCount}}%</view>
   </view>
 
   <view class='page__ft'>
-    <progress style='width:100%' percent="{{curNumber}}" stroke-width="1"/>
+    <view class="progress-bar">
+      <progress percent="{{playCount}}" activeColor="#353535" stroke-width="1" backgroundColor="#09BB07"/>
+      <progress wx:if="{{downloadCount<100}}" percent="{{downloadCount}}" stroke-width="1"/>
+    </view>
     <view class="weui-flex">
         <view class="weui-flex__item">
           <image class='small-btn' src="../../images/icon-show.png"></image>
@@ -38,16 +41,4 @@
         </view>
     </view>
   </view>
-
-  <picker-view class='picker'
-    indicator-style="height:50px;"
-    bindchange="bindChange"
-    style='fixed'
-    value='{{pickerIndex}}'
-     wx:if="{{showPicker}}"
-  >
-    <picker-view-column>
-      <view style="line-height: 50px" bindtap='selectList' wx:key="{{id}}" wx:for="{{wordGroupList}}">{{item.name}}</view>
-    </picker-view-column>
-  </picker-view>
 </view>

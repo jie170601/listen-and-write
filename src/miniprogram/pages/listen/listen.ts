@@ -31,7 +31,8 @@ Page({
     state:StateEnum,
     curState:StateEnum.STOP,
     showPicker:false,
-    curNumber:0,
+    downloadCount:0,
+    playCount:0,
     /**
      * 默认单词列表选择器选中第一个选项
      */
@@ -108,7 +109,7 @@ Page({
       mp3Files.getFilePaths(words, (count: number) => {
         let curNumber: number = Math.round(count / words.length * 100)
         that.setData!({
-          curNumber: curNumber
+          downloadCount: curNumber
         })
       }).then((paths: string[]) => {
         console.log(paths.length)
@@ -146,7 +147,7 @@ Page({
   playProccess(cur:number){
     let curNumber: number = Math.round(cur / this.data.wordGroup.getList().length * 100)
     this.setData!({
-      curNumber: curNumber
+      playCount: curNumber
     })
   }
 })
