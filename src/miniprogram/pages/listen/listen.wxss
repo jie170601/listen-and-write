@@ -1,0 +1,80 @@
+/**index.wxss**/
+page{
+  height:100%;
+}
+.page {
+  display:flex;
+  width:100%;
+  height:100%;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+}
+.page__hd{
+  position:fixed;
+  width:100%;
+  height:auto;
+  top:0;
+}
+.list-name{
+  width:calc(100% - 20rpx);
+  height:auto;
+  padding-top:50rpx;
+  margin-left:10rpx;
+  text-align: center;
+  font-size:50rpx;
+}
+.proccess-number-container{
+  width:100%;
+  text-align: center;
+  height:10rpx;
+  padding:10rpx 0;
+  font-size:20rpx;
+  color:gray;
+}
+.page__bd{
+  width:100%;
+  text-align:center;
+}
+.word{
+  width:calc(100% - 20rpx);
+  text-align:center;
+  font-size:60rpx;
+  color:rgb(6, 221, 250);
+  margin-left:10rpx;
+}
+.test-audio{
+  height:10rpx;
+  padding:10rpx 0;
+  font-size:20rpx;
+}
+.page__ft{
+  position:fixed;
+  display:fixed;
+  width:100%;
+  height:auto;
+  bottom:0;
+}
+.picker{
+  position:fixed;
+  display:fixed;
+  width:calc(100% - 10rpx);
+  height:calc(100% - 300rpx);
+  bottom:0;
+  background:white;
+  z-index:999;
+}
+.weui-flex__item{
+  display:flex;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+}
+.small-btn{
+  width:48rpx;
+  height:48rpx;
+  margin-left:20rpx;
+  margin-right:20rpx;
+}
+.toolbar{
+  height:96rpx;
+}

@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<view class="page">
+<view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errMsg}}</view>
+  <view class='page__hd'>
+    <view class="list-name" bindtap='selectList'>
+      {{wordGroup.name}}
+    </view>  
+    <view class="proccess-number-container">
+      列表共<label style='color:black;'>{{wordGroup.count}}</label>个单词
+    </view>
+  </view>
+
+  <view class="page__bd">
+    <view class="word">下载中：{{curNumber}}%</view>
+  </view>
+
+  <view class='page__ft'>
+    <progress style='width:100%' percent="{{curNumber}}" stroke-width="1"/>
+    <view class="weui-flex">
+        <view class="weui-flex__item">
+          <image class='small-btn' src="../../images/icon-show.png"></image>
+        </view>
+        <view class="weui-flex__item toolbar">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src="../../images/icon-order-play.png"></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src="../../images/icon-order-disabled.png"></image>
+        </view>
+        <view class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState!=state.PLAY}}" src='../../images/icon-play.png' ontap="play"></image>
+          <image class='small-btn' wx:if="{{curState==state.PLAY}}" src='../../images/icon-pause.png' ontap="pause"></image>
+        </view>
+        <view class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-american.png'></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-american-disabled.png'></image>
+        </view>
+        <view class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-test.png'></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-stop.png'></image>
+        </view>
+    </view>
+  </view>
+
+  <picker-view class='picker'
+    indicator-style="height:50px;"
+    bindchange="bindChange"
+    style='fixed'
+    value='{{pickerIndex}}'
+     wx:if="{{showPicker}}"
+  >
+    <picker-view-column>
+      <view style="line-height: 50px" bindtap='selectList' wx:key="{{id}}" wx:for="{{wordGroupList}}">{{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

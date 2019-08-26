@@ -57,7 +57,7 @@
           <text class="fa fa-folder-open"></text>
         </view>
         <view class="weui-cell__bd">{{item.name}}</view>
-        <view class="weui-cell__ft">
+        <view class="weui-cell__ft" bindtap="listen">
           <text class="fa fa-play-circle-o" style='color:#09BB07;'></text>
         </view>
     </view>

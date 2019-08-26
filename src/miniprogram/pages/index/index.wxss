@@ -4,24 +4,27 @@
   top:0;
   left:0;
   width:100%;
-  height:96rpx;
+  height:118rpx;
   border-bottom:1px solid #D5D5D5;
   z-index:999;
   background-color:white;
 }
 .page__hd label{
   font-size: 34rpx;
+  line-height: 118rpx;
   float:right;
-  margin-right:20rpx;
-  margin-top:23rpx;
+  margin-right:30rpx;
 }
 .page__bd{
-  padding-top:96rpx;
-  padding-bottom:96rpx;
+  padding-top:120rpx;
+  padding-bottom:98rpx;
 }
 .weui-cells{
   margin-top:0;
   font-size: 34rpx;
+}
+.weui-cell{
+  padding:40rpx 30rpx;
 }
 .weui-cells:before {
   top: 0;

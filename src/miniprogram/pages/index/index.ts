@@ -270,7 +270,7 @@ Page({
   listen(){
     let that:any = this
     wx.navigateTo({
-      url: '../index/index?groupid='+that.data.groupid
+      url: '../listen/listen?groupid='+that.data.groupid
     })
     return false
   }

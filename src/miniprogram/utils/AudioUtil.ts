@@ -55,6 +55,7 @@ export class AudioUtil{
   public ready():void{
     (async () => {
       console.log("开始播放音频")
+      this.cur = 0
       for (let i = 0; i < this.paths.length; i++) {
         this.proccess(this.cur++)
         for (let j = 0; j < 3; j++) {
