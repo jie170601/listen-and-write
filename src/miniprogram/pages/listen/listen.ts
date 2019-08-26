@@ -106,6 +106,7 @@ Page({
   audioReady(paths:string[]){
     audioUtil.setPaths(paths)
     audioUtil.setProccess(this.playProccess)
+    audioUtil.setEnd(this.end)
     audioUtil.ready()
     audioUtil.playOrPause()
   },
@@ -113,6 +114,15 @@ Page({
     let curNumber: number = Math.round(cur / this.data.wordGroup.getList().length * 100)
     this.setData!({
       playCount: curNumber
+    })
+  },
+  end(){
+    this.setData!({
+      curState:StateEnum.STOP,
+      downloadCount:0,
+      playCount:0,
+      showTopTips: false,
+      errMsg: ''
     })
   }
 })

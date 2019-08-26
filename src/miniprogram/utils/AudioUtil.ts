@@ -78,6 +78,8 @@ export class AudioUtil{
           await this.delay(3000)
         }
       }
+      innerAudioContext.stop()
+      this.paused = true
       this.end()
     })()
   }
@@ -109,7 +111,6 @@ export class AudioUtil{
       innerAudioContext.autoplay = true
       innerAudioContext.src = path
       //为什么设了autoplay了还要调用play方法？？
-      //你问我我问谁去，它不自动播放我能奈它何
       innerAudioContext.play()
       //有些时候要一开始暂停播放
       //比如ready方法调用了，playOrPause方法还没调用的时候
