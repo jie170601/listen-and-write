@@ -22,14 +22,14 @@ page{
   padding-top:50rpx;
   margin-left:10rpx;
   text-align: center;
-  font-size:50rpx;
+  font-size:60rpx;
 }
 .proccess-number-container{
   width:100%;
   text-align: center;
   height:10rpx;
   padding:10rpx 0;
-  font-size:20rpx;
+  font-size:30rpx;
   color:gray;
 }
 .page__bd{
@@ -76,7 +76,7 @@ page{
   margin-right:20rpx;
 }
 .toolbar{
-  height:96rpx;
+  height:128rpx;
 }
 .progress-bar{
   position:relative;
