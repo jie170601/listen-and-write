@@ -2,7 +2,7 @@
 <view class="page">
 
   <view class="page__hd"  wx:if="{{curState===State.WORD_UNFOLD_STATE}}">
-    <label bindtap="toAddGroup">删除</label>
+    <label bindtap="toDeleteWordGroup">删除</label>
     <label bindtap="toAddGroup">添加</label>
   </view>
 
@@ -12,7 +12,7 @@
   </view>
 
   <view class="page__hd"  wx:if="{{curState===State.WORD_FOLD_STATE}}">
-    <label bindtap="toAddGroup">删除</label>
+    <label bindtap="toDeleteWord">删除</label>
     <label bindtap="toAddWord">添加</label>
   </view>
 
