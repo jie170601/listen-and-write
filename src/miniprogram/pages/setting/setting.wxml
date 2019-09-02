@@ -1,2 +1,104 @@
-<!--miniprogram/pages/setting/setting.wxml-->
-<text>miniprogram/pages/setting/setting.wxml</text>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        语速（级）
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <slider show-value value="50"/>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        重复（次）
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <slider show-value value="50"/>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        间隔（秒）
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <slider show-value value="50"/>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        停顿（秒）
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <slider show-value value="50"/>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        乱序听写
+      </view>
+      <view class="weui-flex__item">
+        <switch bindchange="switch2Change"/>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item slider-title">
+        美式发音
+      </view>
+      <view class="weui-flex__item">
+        <switch bindchange="switch2Change"/>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="page__ft">
+      <view class="desc">
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          说明：
+        </view>
+      </view>
+      <view class="weui-flex question-line">
+        <view class="question">
+          1.想找回旧版单词？
+        </view>
+        <view class="question-icon">
+          <text class="fa fa-question-circle-o"></text>
+        </view>
+      </view>
+      <view class="weui-flex question-line">
+        <view class="question">
+          2.听写没有声音？
+        </view>
+        <view class="question-icon">
+          <text class="fa fa-question-circle-o"></text>
+        </view>
+      </view>
+      <view class="weui-flex question-line">
+        <view class="question">
+          3.请不要使用本软件长期保存单词
+        </view>
+        <view class="question-icon">
+          <text class="fa fa-question-circle-o"></text>
+        </view>
+      </view>
+      <view class="weui-flex question-line">
+        <view class="question">
+          4.本软件已开源，欢迎完善与创新
+        </view>
+        <view class="question-icon">
+          <text class="fa fa-question-circle-o"></text>
+        </view>
+      </view>
+    </view>
+    <view class="version">v 2.0.1</view>
+  </view>
+</view>

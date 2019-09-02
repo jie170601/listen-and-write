@@ -1,1 +1,53 @@
-/* miniprogram/pages/setting/setting.wxss */
+.page{
+  font-size: 34rpx;
+  padding-bottom: 390rpx;
+}
+.page__ft{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #888;
+  background-color: white;
+}
+slider{
+  margin: 0;
+  padding: 5rpx 20rpx;
+}
+.slider-title{
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0 28rpx;
+  padding-top: 28rpx;
+}
+.weui-flex{
+  align-items:center;
+}
+switch{
+  float: right;
+  margin: 10rpx;
+}
+.desc{
+  padding: 0 20rpx;
+  color: #888;
+  line-height: 48rpx;
+  font-size: 28rpx;
+}
+.fa{
+  width: 28rpx;
+  height: 28rpx;
+}
+.question{
+  width: calc(100% - 28rpx)
+}
+.question-icon{
+  text-align: right;
+  width:28rpx;
+}
+.question-line:active{
+  color: #383838;
+}
+.version{
+  text-align: center;
+  padding: 48rpx 0;
+}
