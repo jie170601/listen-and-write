@@ -1,0 +1,9 @@
+<view class="page">
+  <view class="page__bd">
+    <textarea class="weui-textarea" placeholder=""/>
+    <button class="weui-btn" type="primary">换一个</button>
+  </view>
+  <view class="page__ft">
+    感谢 <text class="at">@金山词霸</text> 提供的API
+  </view>
+</view>

@@ -1,0 +1,25 @@
+.page{
+  padding: 20rpx;
+}
+.weui-textarea{
+  width: calc(100% - 20rpx);
+  height: 336rpx;
+  border: 2rpx solid #BBB;
+  padding: 10rpx;
+}
+.weui-btn{
+  margin-top: 20rpx;
+}
+.page__ft{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #888;
+  padding: 20rpx 0;
+}
+.at{
+  color: #353535;
+}

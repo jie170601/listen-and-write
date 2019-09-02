@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/setting/setting",
     "pages/index/index",
+    "pages/setting/setting",
+    "pages/mean/mean",
+    "pages/found/found",
     "pages/logs/logs"
   ],
   "window": {
@@ -10,7 +12,7 @@
     "navigationBarTitleText": "单词听写",
     "navigationBarTextStyle": "white"
   },
-  "tabBar": { 
+  "tabBar": {
     "color": "#353535",
     "selectedColor": "#09BB07",
     "borderStyle": "black",

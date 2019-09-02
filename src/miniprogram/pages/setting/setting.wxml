@@ -66,7 +66,7 @@
           说明：
         </view>
       </view>
-      <view class="weui-flex question-line">
+      <view class="weui-flex question-line" bindtap="question_1">
         <view class="question">
           1.想找回旧版单词？
         </view>
@@ -74,7 +74,7 @@
           <text class="fa fa-question-circle-o"></text>
         </view>
       </view>
-      <view class="weui-flex question-line">
+      <view class="weui-flex question-line" bindtap="question_2">
         <view class="question">
           2.听写没有声音？
         </view>
