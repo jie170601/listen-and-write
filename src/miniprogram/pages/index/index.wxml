@@ -72,7 +72,7 @@
             <input class="weui-input" placeholder="请输入单词" bindinput="addWordChanged" id="{{item.id}}"/>
           </view>
       </view>
-      <view class="weui-cell" wx:for="{{item.list}}" wx:key="{{word}}" wx:for-item="word">
+      <view class="weui-cell" wx:for="{{item.list}}" wx:key="{{word}}" wx:for-item="word" id="{{word}}" bindtap="mean">
           <view class="weui-cell__hd">
             <text class="fa fa-file-text-o"></text>
           </view>

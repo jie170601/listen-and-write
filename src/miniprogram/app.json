@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/found/found",
     "pages/index/index",
+    "pages/mean/mean",
+    "pages/setting/setting",
+    "pages/found/found",
     "pages/open/open",
     "pages/warn/warn",
     "pages/test/test",
-    "pages/setting/setting",
-    "pages/mean/mean",
     "pages/logs/logs"
   ],
   "window": {

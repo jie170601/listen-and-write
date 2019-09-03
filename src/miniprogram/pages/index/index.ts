@@ -273,6 +273,13 @@ Page({
       url: '../listen/listen?groupid='+that.data.groupid
     })
     return false
+  },
+  mean(e:any){
+    let word:Word = e.currentTarget.id
+    let groupid:string = this.data.groupid
+    wx.navigateTo({
+      url:'../mean/mean?groupid='+groupid+'&word='+word
+    })
   }
 })
 

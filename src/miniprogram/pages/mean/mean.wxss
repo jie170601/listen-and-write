@@ -1,1 +1,26 @@
 @import "../found/found.wxss";
+.card-outer{
+  width:calc(100% - 120rpx);
+  border-radius:10rpx;
+  padding:60rpx;
+  padding-top:30rpx;
+  background-color: #eee;
+}
+.word{
+  width:100%;
+  font-size:60rpx;
+  color:darkturquoise;
+}
+.phonetic-symbol-line{
+  font-size: 26rpx;
+}
+.phonetic-symbol{
+  font-family: "Arial Unicode MS";
+  font-size: 30rpx;
+}
+.acceptation{
+  font-size: 26rpx;
+}
+.pos{
+  color:gray;
+}

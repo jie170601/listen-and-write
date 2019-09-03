@@ -1,8 +1,27 @@
 <view class="page">
   <view class="page__bd">
-    <textarea class="weui-textarea" placeholder=""/>
-    <button class="weui-btn" type="primary">换一个</button>
+    <!-- 单词卡片组件，简单的显示单词的发音和意思 -->
+    <view class="card-outer">
+      <!-- 单词 -->
+      <view class="word">{{word_name}}</view>
+      <!-- 英式发音，如果API没提供就不显示 -->
+      <view wx:if="{{ph_en!=''}}" class='phonetic-symbol-line'>
+      英 [ <font class="phonetic-symbol">{{ph_en}}</font> ]
+      </view>
+      <!-- 美式发音，如果API没提供就不显示 -->
+      <view wx:if="{{ph_am!=''}}" class='phonetic-symbol-line'>
+      美 [ <font class="phonetic-symbol">{{ph_am}}</font> ]
+      </view>
+      <!-- 遍历输出所有的意思 -->
+      <view class="acceptation" wx:for="{{parts}}" wx:for-item="part">
+        <font class="pos">{{part.part}}</font>{{part.mean}} 
+      </view>
+    </view>
+    <!-- 点击按钮可以切换单词 -->
+    <button class="weui-btn" type="primary" bindtap="next">换一个</button>
   </view>
+
+  <!-- 页脚说明文字 -->
   <view class="page__ft">
     感谢 <text class="at">@金山词霸</text> 提供的API
   </view>
