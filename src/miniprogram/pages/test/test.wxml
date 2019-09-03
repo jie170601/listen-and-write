@@ -57,11 +57,26 @@
     </view>
     <view class="weui-flex">
       <view class="weui-flex__item">
-        或者联系反馈
+        请检测网络是否畅通
       </view>
     </view>
-
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        欢迎联系反馈
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        wx
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        jie170601
+      </view>
+    </view>
     <view class="page__ft">
-      <button class="weui-btn" type="primary">测试</button>
+      <button wx:if="{{pause}}" class="weui-btn" type="primary" bindtap="test">测试</button>
+      <button disabled class="weui-btn" disabled type="primary" bindtap="test">测试</button>
     </view>
 </view>

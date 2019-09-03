@@ -77,7 +77,7 @@ Page({
           downloadCount: curNumber
         })
       }).then((paths: string[]) => {
-        console.log(paths.length)
+        console.log(paths[0])
         that.audioReady(paths)
       })
     }catch(e){
