@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        本软件现已开源
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        在开源平台下载源码后
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        导入微信开发者工具
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        即可随意DIY
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        点击红色文字
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        复制开源地址
+      </view>
+    </view>
+     <view class="weui-flex">
+      <view class="weui-flex__item">
+        <text class="fa fa-hand-o-down"></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="page__ft">
+  
+    <view class="weui-flex">
+      <view class="weui-flex__item git">
+        <text class="fa fa-github"></text>
+        GITHUB
+      </view>
+      <view class="weui-flex__item git">
+        <text class="fa fa-git"></text>
+        GITEE
+      </view>
+    </view>
+  </view>
+
+</view>

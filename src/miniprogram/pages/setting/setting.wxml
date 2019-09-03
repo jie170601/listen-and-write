@@ -82,7 +82,7 @@
           <text class="fa fa-question-circle-o"></text>
         </view>
       </view>
-      <view class="weui-flex question-line">
+      <view class="weui-flex question-line" bindtap="question_3">
         <view class="question">
           3.请不要使用本软件长期保存单词
         </view>
@@ -90,7 +90,7 @@
           <text class="fa fa-question-circle-o"></text>
         </view>
       </view>
-      <view class="weui-flex question-line">
+      <view class="weui-flex question-line" bindtap="question_4">
         <view class="question">
           4.本软件已开源，欢迎完善与创新
         </view>

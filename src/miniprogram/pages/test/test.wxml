@@ -1,0 +1,67 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        有同学反映点了听写没声音
+      </view>
+    </view>
+  </view>
+  <view class="weui-flex">
+      <view class="weui-flex__item">
+        主要是6和6s
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        我没有苹果哇
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        而且很多6/6s用户使用正常
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        而且检查了代码没发现问题
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        所以这个问题还没有解决
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        所以做了个测试的页面
+      </view>
+    </view><view class="weui-flex">
+      <view class="weui-flex__item">
+        点击下方测试按钮
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        会播放音频文件
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        如果没有声音
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        请检测媒体音量是否开启
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        或者联系反馈
+      </view>
+    </view>
+
+    <view class="page__ft">
+      <button class="weui-btn" type="primary">测试</button>
+    </view>
+</view>

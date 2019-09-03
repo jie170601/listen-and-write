@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/open/open",
+    "pages/warn/warn",
+    "pages/test/test",
     "pages/setting/setting",
     "pages/mean/mean",
     "pages/found/found",

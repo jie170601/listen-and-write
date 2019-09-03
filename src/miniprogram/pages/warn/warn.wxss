@@ -1,0 +1,7 @@
+@import "../test/test.wxss";
+
+.ref{
+  color: #383838;
+  background-color: #eee;
+  padding: 20rpx 0;
+}

@@ -1,0 +1,10 @@
+@import "../test/test.wxss";
+
+.git {
+  font-size: 58rpx;
+  line-height: 116rpx;
+  color: brown;
+}
+.git:active {
+  color: red;
+}

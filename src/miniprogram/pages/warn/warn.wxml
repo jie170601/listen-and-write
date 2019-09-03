@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        根据小程序官方文档
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        缓存可能被系统清理
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="ref">
+          “将数据存储在本地缓存中指定的 key 中。会覆盖掉原来该 key 对应的内容。除非用户主动删除或因存储空间原因被系统清理，否则数据都一直可用。单个 key 允许存储的最大数据长度为 1MB，所有数据存储上限为 10MB。”
+        </view>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        且有同学确实丢失过单词
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        所以建议将单词文本自行备份
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        本程序只是为了存储单次听写的单词
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        后续可能开发永久保存
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        而且程序现已开源
+      </view>
+    </view>
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        敬请期待
+      </view>
+    </view>
+  </view>
+
+</view>
