@@ -40,11 +40,11 @@
   <view class="page__ft">
   
     <view class="weui-flex">
-      <view class="weui-flex__item git">
+      <view class="weui-flex__item git" bindtap="toGithub">
         <text class="fa fa-github"></text>
         GITHUB
       </view>
-      <view class="weui-flex__item git">
+      <view class="weui-flex__item git" bindtap="toGitee">
         <text class="fa fa-git"></text>
         GITEE
       </view>
