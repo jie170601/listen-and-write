@@ -42,15 +42,15 @@ Page({
     let content = this
     wx.request({
       url: 'https://dict-co.iciba.com/api/dictionary.php?type=json&w=' + word + '&key='+key,
-      success: function (res) {
-        let data = res.data
-        let word_name = data.word_name
-        let ph_en = data.symbols[0].ph_en
-        let ph_am = data.symbols[0].ph_am
-        let parts = new Array()
+      success: function (res:any) {
+        let data:any = res.data
+        let word_name:string = data.word_name
+        let ph_en:string = data.symbols[0].ph_en
+        let ph_am:string = data.symbols[0].ph_am
+        let parts:Array<any> = new Array()
         for (let i = 0; i < data.symbols[0].parts.length; i++) {
-          let part = data.symbols[0].parts[i].part
-          let mean = ''
+          let part:any = data.symbols[0].parts[i].part
+          let mean:string = ''
           for (let j = 0; j < data.symbols[0].parts[i].means.length; j++) {
             mean += data.symbols[0].parts[i].means[j] + '；'
           }
