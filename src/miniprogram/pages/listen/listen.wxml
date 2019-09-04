@@ -11,7 +11,10 @@
   </view>
 
   <view class="page__bd">
-    <view class="word">下载中：{{downloadCount}}%</view>
+    <view class="word" wx:if="{{show&&downloadCount<100}}">下载中：{{downloadCount}}%</view>
+    <view class="word" wx:if="{{!show&&downloadCount<100}}">单词听写</view>
+    <view class="word" wx:if="{{show&&downloadCount==100}}">{{word}}</view>
+    <view class="word" wx:if="{{!show&&downloadCount>=100}}">听写中</view>
   </view>
 
   <view class='page__ft'>
@@ -20,24 +23,33 @@
       <progress wx:if="{{downloadCount<100}}" percent="{{downloadCount}}" stroke-width="1"/>
     </view>
     <view class="weui-flex">
-        <view class="weui-flex__item">
-          <image class='small-btn' src="../../images/icon-show.png"></image>
-        </view>
         <view class="weui-flex__item toolbar">
-          <image class='small-btn' wx:if="{{curState==state.STOP}}" src="../../images/icon-order-play.png"></image>
+          <image wx:if="{{show}}" class='small-btn' src="../../images/icon-show.png" bindtap="show"></image>
+          <image wx:if="{{!show}}" class='small-btn' src="../../images/icon-hidden.png" bindtap="hidden"></image>
+        </view>
+        <view wx:if="{{params.mode===mode.RANDOM}}" class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src="../../images/icon-disorder-play.png" bindtap="modeChange"></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src="../../images/icon-disorder-disabled.png"></image>
+        </view>
+        <view wx:if="{{params.mode===mode.ORDER}}" class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src="../../images/icon-order-play.png" bindtap="modeChange"></image>
           <image class='small-btn' wx:if="{{curState!=state.STOP}}" src="../../images/icon-order-disabled.png"></image>
         </view>
         <view class="weui-flex__item">
           <image class='small-btn' wx:if="{{curState!=state.PLAY}}" src='../../images/icon-play.png' ontap="play"></image>
           <image class='small-btn' wx:if="{{curState==state.PLAY}}" src='../../images/icon-pause.png' ontap="pause"></image>
         </view>
-        <view class="weui-flex__item">
-          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-american.png'></image>
+        <view wx:if="{{params.pron===pron.AMERICAN}}" class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-american.png' bindtap="pronChange"></image>
           <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-american-disabled.png'></image>
         </view>
+        <view wx:if="{{params.pron===pron.BRITISH}}" class="weui-flex__item">
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-british.png' bindtap="pronChange"></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-british-disabled.png'></image>
+        </view>
         <view class="weui-flex__item">
-          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-test.png'></image>
-          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-stop.png'></image>
+          <image class='small-btn' wx:if="{{curState==state.STOP}}" src='../../images/icon-test.png' bindtap="toTest"></image>
+          <image class='small-btn' wx:if="{{curState!=state.STOP}}" src='../../images/icon-stop.png' bindtap="stop"></image>
         </view>
     </view>
   </view>

@@ -34,7 +34,10 @@ Page({
     errMsg:'',
     params:new Params(),
     mode:Mode,
-    pron:Pronunciation
+    pron:Pronunciation,
+    show:false,
+    words:[],
+    word:""
   },
   onLoad(options:any) {
     let groupid:string = options.groupid
@@ -70,6 +73,13 @@ Page({
       let mp3Files: Word2Mp3 = new Word2Mp3(this.data.params)
       let that = this
       let words: Array<Word> = this.data.wordGroup.getList()
+      if (this.data.params.getMode()===Mode.RANDOM) {
+        words = this.shuffle(words)
+      }
+      this.setData!({
+        show:true,
+        words:words
+      })
       this.translateState(StateEnum.PLAY)
       mp3Files.getFilePaths(words, (count: number) => {
         let curNumber: number = Math.round(count / words.length * 100)
@@ -110,10 +120,16 @@ Page({
     audioUtil.setEnd(this.end)
     audioUtil.ready()
     audioUtil.playOrPause()
+    this.setData!({
+      show:false
+    })
   },
   playProccess(cur:number){
     let curNumber: number = Math.round(cur / this.data.wordGroup.getList().length * 100)
+    let words:Word[] = this.data.words
+    let word:Word = words[cur-1]
     this.setData!({
+      word:word,
       playCount: curNumber
     })
   },
@@ -125,5 +141,61 @@ Page({
       showTopTips: false,
       errMsg: ''
     })
+  },
+  flushParams() {
+    StorageUtil.setParams(this.data.params)
+  },
+  modeChange() {
+    let params: Params = this.data.params
+    if (params.getMode() === Mode.RANDOM) {
+      params.setMode(Mode.ORDER)
+    } else if (params.getMode() === Mode.ORDER) {
+      params.setMode(Mode.RANDOM)
+    }
+    this.setData!({
+      params: params,
+    })
+    this.flushParams()
+  },
+  pronChange() {
+    let params: Params = this.data.params
+    if (params.getPron() === Pronunciation.AMERICAN) {
+      params.setPron(Pronunciation.BRITISH)
+    } else if (params.getPron() === Pronunciation.BRITISH) {
+      params.setPron(Pronunciation.AMERICAN)
+    }
+    this.setData!({
+      params: params,
+    })
+    this.flushParams()
+  },
+  toTest(){
+    wx.navigateTo({
+      url:"../test/test"
+    })
+  },
+  stop(){
+    audioUtil.stop()
+  },
+  show(){
+    this.setData!({
+      show:false
+    })
+  },
+  hidden(){
+    this.setData!({
+      show:true
+    })
+  },
+  shuffle(words: string[]): string[] {
+    let len = words.length
+    for (let i = 0; i < len; i++) {
+      let end = len - 1
+      let index = (Math.random() * (end + 1)) >> 0
+      let t = words[end]
+      words[end] = words[index]
+      words[index] = t
+    }
+    return words
   }
 })

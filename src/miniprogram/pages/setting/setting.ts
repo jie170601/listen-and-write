@@ -9,19 +9,21 @@ Page({
     pronChecked:false
   },
   onLoad() {
+  },
+  onShow() {
     let params: Params = StorageUtil.getParams()
-    let modeChecked:boolean = false
-    let pronChecked:boolean = false
-    if(params.getMode()===Mode.RANDOM){
+    let modeChecked: boolean = false
+    let pronChecked: boolean = false
+    if (params.getMode() === Mode.RANDOM) {
       modeChecked = true
     }
-    if(params.getPron()===Pronunciation.AMERICAN){
+    if (params.getPron() === Pronunciation.AMERICAN) {
       pronChecked = true
     }
     this.setData!({
-      params:params,
-      modeChecked:modeChecked,
-      pronChecked:pronChecked
+      params: params,
+      modeChecked: modeChecked,
+      pronChecked: pronChecked
     })
   },
   flushParams(){

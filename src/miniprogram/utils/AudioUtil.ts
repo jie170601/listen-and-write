@@ -93,9 +93,7 @@ export class AudioUtil{
           await this.delay(this.pause*1000)
         }
       }
-      innerAudioContext.stop()
-      this.paused = true
-      this.end()
+      this.stop()
     })()
   }
 
@@ -112,6 +110,12 @@ export class AudioUtil{
       innerAudioContext.pause()
       this.paused = true
     }
+  }
+
+  public stop():void{
+    innerAudioContext.stop()
+    this.paused = true
+    this.end()
   }
 
   /**

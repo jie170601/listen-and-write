@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/setting/setting",
     "pages/index/index",
+    "pages/setting/setting",
     "pages/mean/mean",
     "pages/found/found",
     "pages/open/open",
     "pages/warn/warn",
     "pages/test/test",
-    "pages/listen/listen"
+    "pages/listen/listen",
+    "pages/delete/delete"
   ],
   "window": {
     "backgroundTextStyle": "light",
