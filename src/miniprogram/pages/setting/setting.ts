@@ -112,5 +112,15 @@ Page({
     wx.navigateTo({
       url: '../open/open',
     })
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '曾经也讨厌过英语课上听写单词',
+      path: '/pages/setting/setting',
+      imageUrl: "http://img1.ph.126.net/gtigWEVlA6XbXE9aFrB0ew==/2098114476501923011.jpg"
+    }
   }
 })

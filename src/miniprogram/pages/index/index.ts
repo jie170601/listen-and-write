@@ -268,6 +268,16 @@ Page({
     wx.navigateTo({
       url:'../mean/mean?groupid='+groupid+'&word='+word
     })
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '每一次听写，为了离梦想更近一步',
+      path: '/pages/index/index',
+      imageUrl: "http://img1.ph.126.net/gtigWEVlA6XbXE9aFrB0ew==/2098114476501923011.jpg"
+    }
   }
 })
 
