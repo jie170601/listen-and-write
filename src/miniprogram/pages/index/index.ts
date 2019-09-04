@@ -23,22 +23,32 @@ enum StateEnum {
 
 Page({
   data: {
-    addGroupName:'',//用户输入的添加分组名称
+    //保存添加单词状态下输入的单词
     addWord:'',
+    //当前展开的单词分组ID
     groupid:'',
-    s: -1,
+    //用户输入的添加分组名称
+    addGroupName: '',
+    //状态枚举
+    State: StateEnum,
+    //批量添加单词输入的字数统计
+    textAreaCount: 0,
+    //批量添加单词输入的内容
+    textAreaValue: '',
+    //单词分组列表
     wordGroupList:new Array<WordGroup>(),
-    State:StateEnum,
+    //当前状态
     curState: StateEnum.WORD_UNFOLD_STATE,
-    preState:StateEnum.WORD_UNFOLD_STATE,
-    selectData:[],
-    textAreaCount:0,
-    textAreaValue:''
+    //上一个状态
+    preState:StateEnum.WORD_UNFOLD_STATE
   },
   onLoad() {
+    //页面加载的时候刷新一次页面
     this.flushPageData()
   },
   onShow(){
+    //页面显示的时候再刷新一次页面
+    //为了删除单词后次页面能自动同步
     this.flushPageData()
   },
   /**
@@ -97,51 +107,11 @@ Page({
   cancelAddGroup(){
     this.translateStateTo(StateEnum.WORD_UNFOLD_STATE)
   },
-  /**
-   * 编辑按钮点击事件
-   */
-  deleteGroup(){
-    //this.translateStateTo(StateEnum.DELETE_STATE)
-  },
-  /**
-   * 删除选中的单词分组和单词
-   */
-  saveDeleteGroup(){
-    let that = this
-    wx.showModal({
-      title: '提示',
-      content: '确定删除吗？',
-      success(res) {
-        if (res.confirm) {
-          StorageUtil.deleteWordGroup(new WordGroup())
-          that.translateStateTo(that.data.preState)
-          that.flushPageData()
-        }
-      }
-    })
-  },
-  /**
-   * 取消编辑
-   * 这里状态跳转的时候有两种可能
-   * 可能跳转到单词分组展开的状态
-   * 也可能跳转到单词分组未展开的状态
-   * 具体的要根据前面的状态来判断
-   */
-  cancelDeleteGroup(){
-    this.translateStateTo(this.data.preState)
-  },
   //添加分组输入框输入事件处理
   addGroupNameChanged(e:any){
     this.setData!({
       addGroupName:e.detail.value
     })
-  },
-  //编辑状态下选择改变事件处理
-  selectChanged(e:any){
-    console.log(e.detail.value)
-    // this.setData!({
-    //   selectData:e.detail.value
-    // })
   },
   /**
    * 展开所点击的单词列表
@@ -164,15 +134,24 @@ Page({
       groupid:groupid
     })
   },
+  /**
+   * 页面变成添加单词状态
+   */
   toAddWord(){
     this.translateStateTo(StateEnum.ADD_WORD_STATE)
   },
+  /**
+   * 添加单词输入框事件处理
+   */
   addWordChanged(e:any){
     this.setData!({
       addWord:e.detail.value,
       groupid:e.currentTarget.id
     })
   },
+  /**
+   * 保存添加单词
+   */
   saveAddWord(){
     let wordGroup:WordGroup = new WordGroup()
     let word:Word = this.data.addWord
@@ -185,22 +164,25 @@ Page({
     this.flushPageData()
   },
   /**
+   * 当取消添加单词按钮点击的时候
+   * 需要将状态改为单词分组展开状态
+   * 并且将输入的单词置为空
+   */
+  cancelAddWord() {
+    this.translateStateTo(StateEnum.WORD_FOLD_STATE)
+    this.setData!({
+      addWord: ''
+    })
+  },
+  /**
    * 批量添加单词按钮点击事件处理
    */
   toAddWords(){
     this.translateStateTo(StateEnum.BATCH_ADD_STATE)
   },
   /**
-   * 当取消添加单词按钮点击的时候
-   * 需要将状态改为单词分组展开状态
-   * 并且将输入的单词置为空
+   * 批量添加单词输入框事件处理
    */
-  cancelAddWord(){
-    this.translateStateTo(StateEnum.WORD_FOLD_STATE)
-    this.setData!({
-      addWord: ''
-    })
-  },
   textAreaInput(e:any){
     this.setData!({
       textAreaValue:e.detail.value,
@@ -255,6 +237,9 @@ Page({
       url: '../delete/delete?groupid='+that.data.groupid
     })
   },
+  /**
+   * 去听写界面
+   */
   listen(){
     let that:any = this
     wx.navigateTo({
@@ -262,6 +247,9 @@ Page({
     })
     return false
   },
+  /**
+   * 去单词意思界面
+   */
   mean(e:any){
     let word:Word = e.currentTarget.id
     let groupid:string = this.data.groupid
@@ -274,7 +262,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '每一次听写，为了离梦想更近一步',
+      title: '每一次听写，为了离梦想更近',
       path: '/pages/index/index',
       imageUrl: "http://img1.ph.126.net/gtigWEVlA6XbXE9aFrB0ew==/2098114476501923011.jpg"
     }

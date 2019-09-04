@@ -3,12 +3,6 @@ Page({
     list:""    
   },
   onLoad() {
-    let a = [
-      {word:'ab',desc:'ab'},
-      {word:'ab',desc:'ab'},
-      { word: 'ab', desc: 'ab' }
-    ]
-    wx.setStorageSync("words_listen_list",a)
   },
   found(){
     let list:any = wx.getStorageSync("words_listen_list")

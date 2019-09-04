@@ -1,9 +1,16 @@
+//删除页面脚本
 import { StorageUtil } from '../../utils/StorageUtil'
 import { WordGroup } from '../../beans/WordGroup'
 import { Word } from '../../beans/Word'
 
-enum State{
+/**
+ * 页面状态的枚举类型
+ * 页面可以处在删除单词状态或者删除分组状态
+ */
+enum State {
+  //删除分组状态
   DELETE_GROUP,
+  //删除单词状态
   DELETE_WORD
 }
 

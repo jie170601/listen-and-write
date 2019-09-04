@@ -5,7 +5,8 @@
  * 听写的基础是能够稳定播放音频
  */
 
-import {Params} from '../beans/Params'
+import { Params } from '../beans/Params'
+import {Promise} from './promise/lib/Promise'
 
 let innerAudioContext = wx.createInnerAudioContext()
 

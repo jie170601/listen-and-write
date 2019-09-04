@@ -2,11 +2,17 @@
  * 系统参数类
  */
 export class Params{
+  //语速
   private speed:number
+  //每个单词的重复次数
   private repeat:number
+  //每次重复之间的时间间隔
   private interval:number
+  //每两个单词之间的停顿时间
   private pause:number
+  //单词播放的模式：随机播放/顺序播放
   private mode:Mode
+  //单词的发音类型：英式/美式
   private pron:Pronunciation
   /**
    * 构造方法中给各参数赋默认值

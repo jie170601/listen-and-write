@@ -7,7 +7,8 @@
  * 所以直接在此类中处理成了同步下载
  * 调用的地方直接调用就能保证音频文件已经下载完成
  */
-import {Params,Pronunciation} from '../beans/Params'
+import { Params, Pronunciation } from '../beans/Params'
+import { Promise } from './promise/lib/Promise'
 
 //TTS API的请求路径
 const ttsApi: string = "https://dict.youdao.com/dictvoice?le=auto"

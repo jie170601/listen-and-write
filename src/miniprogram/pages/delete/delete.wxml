@@ -1,42 +1,44 @@
 <!-- 删除单词分组或者删除单词界面 -->
 <view class='page'>
-
+  <!-- 操作按钮开始 -->
   <view class='page__hd'>
     <label bindtap='deleteGroup' wx:if="{{curState==State.DELETE_GROUP}}">删除</label>
     <label bindtap='deleteWord' wx:if="{{curState==State.DELETE_WORD}}">删除</label>
     <label bindtap='cancel'>取消</label>
   </view>
+  <!-- 操作按钮结束 -->
 
+  <!-- 选择列表开始 -->
   <view class='page__bd'>
-
+    <!-- 删除分组开始 -->
+    <!-- 只有在删除分组状态下才显示这个列表 -->
     <checkbox-group wx:if="{{curState==State.DELETE_GROUP}}" bindchange="groupSelectChange">
       <view class="weui-cells weui-cells_after-title" id="{{item.id}}" wx:key="{{id}}" wx:for="{{wordGroupList}}">
         <view class="weui-cell">
-          <!-- 删除选择器，只有在删除状态才会显示 -->
           <view class="weui-cell__hd">
             <checkbox value='{{item.id}}'></checkbox>
           </view>
           <view class="weui-cell__bd">{{item.name}}</view>
-          <view class="weui-cell__ft">
-            {{item.count}}
-          </view>
+          <view class="weui-cell__ft">{{item.count}}</view>
         </view>
       </view>
     </checkbox-group>
+    <!-- 删除分组结束 -->
 
+    <!-- 删除单词开始 -->
+    <!-- 只有在删除单词状态下才显示此分组 -->
     <checkbox-group wx:if="{{curState==State.DELETE_WORD}}" bindchange="wordSelectChange">
       <view class="weui-cells weui-cells_after-title" wx:for="{{wordList}}">
         <view class="weui-cell">
-          <!-- 删除选择器，只有在删除状态才会显示 -->
           <view class="weui-cell__hd">
-              <checkbox value='{{item}}'></checkbox>
+            <checkbox value='{{item}}'></checkbox>
           </view>
           <view class="weui-cell__bd">{{item}}</view>
           <view class="weui-cell__ft"></view>
         </view>
       </view>
     </checkbox-group>
-
+    <!-- 删除单词结束 -->
   </view>
-
+  <!-- 选择列表结束 -->
 </view>

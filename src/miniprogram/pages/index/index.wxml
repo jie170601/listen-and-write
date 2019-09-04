@@ -1,86 +1,109 @@
-<!--index.wxml-->
+<!-- 单词列表页 -->
 <view class="page">
-
+  <!-- 顶部操作栏开始 -->
+  <!-- 如果没有单词列表展开，则可以选择添加单词分组或删除单词分组 -->
   <view class="page__hd"  wx:if="{{curState===State.WORD_UNFOLD_STATE}}">
     <label bindtap="toDeleteWordGroup">删除</label>
     <label bindtap="toAddGroup">添加</label>
   </view>
 
-  <view class="page__hd"  wx:if="{{curState===State.ADD_GROUP_STATE}}">
-    <label bindtap="saveAddGroup">保存</label>
-    <label bindtap="cancelAddGroup">取消</label>
-  </view>
-
+  <!-- 如果有单词列表展开，则可以选择在展开的单词分组内添加单词或删除单词 -->
   <view class="page__hd"  wx:if="{{curState===State.WORD_FOLD_STATE}}">
     <label bindtap="toDeleteWord">删除</label>
     <label bindtap="toAddWord">添加</label>
   </view>
 
+  <!-- 添加单词分组状态下，可以保存单词分组或者取消保存单词分组 -->
+  <view class="page__hd"  wx:if="{{curState===State.ADD_GROUP_STATE}}">
+    <label bindtap="saveAddGroup">保存</label>
+    <label bindtap="cancelAddGroup">取消</label>
+  </view>
+
+  <!-- 添加单词状态下，可以保存单词或者取消保存单词 -->
   <view class="page__hd"  wx:if="{{curState===State.ADD_WORD_STATE}}">
     <label bindtap="saveAddWord">保存</label>
     <label bindtap="cancelAddWord">取消</label>
   </view>
 
+  <!-- 批量添加单词状态下，可以保存单词或者取消保存单词 -->
   <view class="page__hd"  wx:if="{{curState===State.BATCH_ADD_STATE}}">
     <label bindtap="saveAddWords">保存</label>
     <label bindtap="cancelAddWords">取消</label>
   </view>
+  <!-- 顶部操作栏结束 -->
 
+  <!-- 单词列表开始 -->
   <view class="page__bd">
-
-  <view class="weui-cells" wx:if="{{curState===State.ADD_GROUP_STATE}}">
-    <view class="weui-cell">
-      <view class="weui-cell__hd">
-        <text class="fa fa-folder"></text>
-      </view>
-      <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="请输入分组名" bindinput="addGroupNameChanged"/>
+    <!-- 添加分组开始 -->
+    <!-- 只有在添加分组状态下才显示添加分组组件 -->
+    <view class="weui-cells" wx:if="{{curState===State.ADD_GROUP_STATE}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="fa fa-folder"></text>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入分组名" bindinput="addGroupNameChanged"/>
+        </view>
       </view>
     </view>
-  </view>
+    <!-- 添加分组结束 -->
 
+    <!-- 单词分组开始 -->
   <view wx:for="{{wordGroupList}}" wx:key="{{id}}">
-
-  <view class="weui-cells" wx:if="{{item.id!==groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
-    <view class="weui-cell">
+    <!-- 未展开的单词分组开始 -->
+    <view class="weui-cells" wx:if="{{item.id!==groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
+      <view class="weui-cell">
         <view class="weui-cell__hd">
           <text class="fa fa-folder"></text>
         </view>
         <view class="weui-cell__bd">{{item.name}}</view>
         <view class="weui-cell__ft">{{item.count}}</view>
+      </view>
     </view>
-  </view>
+    <!-- 未展开的单词分组结束 -->
 
-  <view class="weui-cells" wx:if="{{curState!==State.WORD_UNFOLD_STATE&&item.id===groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
-    <view class="weui-cell">
+    <!-- 展开的单词分组开始 -->
+    <view class="weui-cells" wx:if="{{curState!==State.WORD_UNFOLD_STATE&&item.id===groupid}}" bindtap="foldWordGroup" id="{{item.id}}">
+      <view class="weui-cell">
         <view class="weui-cell__hd">
           <text class="fa fa-folder-open"></text>
         </view>
         <view class="weui-cell__bd">{{item.name}}</view>
+        <!-- 听写按钮 -->
         <view class="weui-cell__ft" catchtap="listen">
           <text class="fa fa-play-circle-o" style='color:#09BB07;'></text>
         </view>
+      </view>
     </view>
-  </view>
+    <!-- 展开的单词分组结束 -->
 
+    <!-- 展开分组下单词列表开始 -->
     <view class="weui-cells" wx:if="{{curState!==State.WORD_UNFOLD_STATE&&item.id===groupid}}">
+      <!-- 添加单词开始 -->
       <view class="weui-cell" wx:if="{{curState===State.ADD_WORD_STATE}}">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入单词" bindinput="addWordChanged" id="{{item.id}}"/>
-          </view>
+        <view class="weui-cell__hd">
+          <text class="fa fa-file-text-o"></text>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入单词" bindinput="addWordChanged" id="{{item.id}}"/>
+        </view>
       </view>
-      <view class="weui-cell" wx:for="{{item.list}}" wx:key="{{word}}" wx:for-item="word" id="{{word}}" bindtap="mean">
-          <view class="weui-cell__hd">
-            <text class="fa fa-file-text-o"></text>
-          </view>
-          <view class="weui-cell__bd">{{word}}</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </view>
-    </view>
+      <!-- 添加单词结束 -->
 
+      <!-- 列表开始 -->
+      <view class="weui-cell" wx:for="{{item.list}}" wx:key="{{word}}" wx:for-item="word" id="{{word}}" bindtap="mean">
+        <view class="weui-cell__hd">
+          <text class="fa fa-file-text-o"></text>
+        </view>
+        <view class="weui-cell__bd">{{word}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <!-- 列表结束 -->
+    </view>
+    <!-- 展开分组下单词列表结束 -->
+
+    <!-- 批量添加单词输入框开始 -->
+    <!-- 只有在批量添加单词状态下，并且当前分组为展开的分组，才显示此组件 -->
     <view class="weui-cells" wx:if="{{curState===State.BATCH_ADD_STATE&&item.id===groupid}}">
       <view class="weui-cell">
         <view class="weui-cell__bd">
@@ -89,7 +112,9 @@
         </view>
       </view>
     </view>
+    <!-- 批量添加单词输入框结束 -->
 
+    <!-- 批量添加单词按钮开始 -->
     <view class="weui-cells" wx:if="{{curState===State.WORD_FOLD_STATE&&item.id===groupid}}">
       <view class="weui-cell">
         <view class="weui-cell__bd add-words" bindtap="toAddWords">
@@ -98,5 +123,7 @@
       </view>
     </view>
     </view>
+    <!-- 批量添加单词按钮结束 -->
   </view>
+  <!-- 单词列表结束 -->
 </view>
