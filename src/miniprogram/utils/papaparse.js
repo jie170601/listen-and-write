@@ -4,6 +4,9 @@
 	https://github.com/mholt/PapaParse
 	License: MIT
 */
+
+/// <reference path="./papaparse.d.ts" />
+
 (function(root, factory)
 {
 	/* globals define */
