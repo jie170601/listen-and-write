@@ -10,11 +10,12 @@
  * 
  * 存在本地真的没问题吗？
  * -有问题的，比如微信不高兴了就清缓存，保存的单词就全没了！
- * -每个小程序只有10KB的缓存空间，对学霸来说可能不够用！
+ * -每个小程序只有10MB的缓存空间，对超级学霸来说可能不够用！
  */
 
 import { WordGroup } from '../beans/WordGroup'
 import { Word } from '../beans/Word'
+import {Params,Mode,Pronunciation} from '../beans/Params'
 
 export class StorageUtil{
 
@@ -115,5 +116,33 @@ export class StorageUtil{
    */
   private static saveWordGroupList(wordGroupList:Array<WordGroup>):void{
     wx.setStorageSync('wordGroupList',wordGroupList)
+  }
+
+  /************* 系统参数操作 **************/
+  public static setParams(params: Params): void {
+    wx.setStorageSync("params",params)
+  }
+  public static getParams():Params{
+    let paramsObject:any = wx.getStorageSync("params")
+    let params:Params = new Params()
+    if(typeof paramsObject === 'object'){
+      params.setSpeed(paramsObject.speed)
+      params.setRepeat(paramsObject.repeat)
+      params.setInterval(paramsObject.interval)
+      params.setPause(paramsObject.pause)
+      if (paramsObject.mode === 0) {
+        params.setMode(Mode.RANDOM)
+      }
+      if (paramsObject.mode === 1) {
+        params.setMode(Mode.ORDER)
+      }
+      if (paramsObject.pron === 0) {
+        params.setPron(Pronunciation.BRITISH)
+      }
+      if (paramsObject.pron === 1) {
+        params.setPron(Pronunciation.AMERICAN)
+      }
+    }
+    return params
   }
 }

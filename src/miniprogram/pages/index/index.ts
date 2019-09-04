@@ -1,19 +1,8 @@
-//index.js
 //获取应用实例
-// import { IMyApp } from '../../app'
-// import { Word2Mp3 } from '../../utils/Word2Mp3'
-// import { showErrorMsg } from '../../utils/util'
 import {StorageUtil} from '../../utils/StorageUtil'
-// import {WordList} from '../../bean/WordList'
-// import {IndexList} from '../../bean/Index
-// import {AudioUtil} from '../../utils/AudioUtil'
 import { WordGroup } from '../../beans/WordGroup'
 import { Word } from '../../beans/Word'
 import {parse} from '../../utils/papaparse'
-
-// const app = getApp<IMyApp>()
-
-// const audioUtil = new AudioUtil()
 
 /**
  * 在这个页面中，有很多复杂的操作
@@ -200,7 +189,6 @@ Page({
    */
   toAddWords(){
     this.translateStateTo(StateEnum.BATCH_ADD_STATE)
-    //console.log(parse("a,b,c,dd"))
   },
   /**
    * 当取消添加单词按钮点击的时候
