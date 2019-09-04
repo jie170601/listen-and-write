@@ -12,8 +12,8 @@ export class Params{
    * 构造方法中给各参数赋默认值
    */
   public constructor(){
-    //默认语速为4
-    this.speed = 4
+    //默认语速为0
+    this.speed = 0
     //默认每个单词重复3次
     this.repeat = 3
     //默认每次重复之间间隔3秒钟

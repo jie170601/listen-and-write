@@ -1,17 +1,13 @@
 //index.js
 //获取应用实例
-// import { IMyApp } from '../../app'
 import { Word2Mp3 } from '../../utils/Word2Mp3'
-// import { showErrorMsg } from '../../utils/util'
 import {StorageUtil} from '../../utils/StorageUtil'
 import {WordGroup} from '../../beans/WordGroup'
 import {Word} from '../../beans/Word'
-// import {IndexList} from '../../bean/IndexList'
 import {AudioUtil} from '../../utils/AudioUtil'
+import {Params,Mode,Pronunciation} from '../../beans/Params'
 
-// const app = getApp<IMyApp>()
-
-const audioUtil:AudioUtil = new AudioUtil()
+let audioUtil:AudioUtil = new AudioUtil(StorageUtil.getParams())
 
 /**
  * 声明了一个枚举类型
@@ -35,12 +31,16 @@ Page({
     wordGroup:new WordGroup(),
     wordGroupList:new Array <WordGroup>(),
     showTopTips:false,
-    errMsg:''
+    errMsg:'',
+    params:new Params(),
+    mode:Mode,
+    pron:Pronunciation
   },
   onLoad(options:any) {
     let groupid:string = options.groupid
     let wordGroup: WordGroup = new WordGroup()
     let wordGroupList: Array<WordGroup> = StorageUtil.getWordGroup()
+    let params: Params = StorageUtil.getParams()
     //没有单词分组的情况下，显示前往单词管理页面的按钮
     if (wordGroupList.length === 0) {
       console.log("没有单词分组")
@@ -54,6 +54,7 @@ Page({
       }
     }
     this.setData!({
+      params:params,
       wordGroup: wordGroup,
       wordGroupList: wordGroupList
     })
@@ -65,9 +66,8 @@ Page({
   },
   play(){
     if (this.data.curState === StateEnum.STOP) {
-
       try {
-      let mp3Files: Word2Mp3 = new Word2Mp3()
+      let mp3Files: Word2Mp3 = new Word2Mp3(this.data.params)
       let that = this
       let words: Array<Word> = this.data.wordGroup.getList()
       this.translateState(StateEnum.PLAY)
@@ -103,7 +103,8 @@ Page({
     this.translateState(StateEnum.PAUSE)
     audioUtil.playOrPause()
   },
-  audioReady(paths:string[]){
+  audioReady(paths: string[]) {
+    audioUtil.updateParams(StorageUtil.getParams())
     audioUtil.setPaths(paths)
     audioUtil.setProccess(this.playProccess)
     audioUtil.setEnd(this.end)

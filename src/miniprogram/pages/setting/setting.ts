@@ -27,6 +27,42 @@ Page({
   flushParams(){
     StorageUtil.setParams(this.data.params)
   },
+  speedChange(e:any){
+    let speed: number = e.detail.value
+    let params: Params = this.data.params
+    params.setSpeed(speed)
+    this.setData!({
+      params:params
+    })
+    this.flushParams()
+  },
+  repeatChange(e: any){
+    let repeat: number = e.detail.value
+    let params: Params = this.data.params
+    params.setRepeat(repeat)
+    this.setData!({
+      params: params
+    })
+    this.flushParams()
+  },
+  intervalChange(e: any){
+    let interval: number = e.detail.value
+    let params: Params = this.data.params
+    params.setInterval(interval)
+    this.setData!({
+      params: params
+    })
+    this.flushParams()
+  },
+  pauseChange(e: any){
+    let pause: number = e.detail.value
+    let params: Params = this.data.params
+    params.setPause(pause)
+    this.setData!({
+      params: params
+    })
+    this.flushParams()
+  },
   modeChange() {
     let params: Params = this.data.params
     let modeChecked:boolean = !this.data.modeChecked

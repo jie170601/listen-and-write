@@ -7,20 +7,33 @@
  * 所以直接在此类中处理成了同步下载
  * 调用的地方直接调用就能保证音频文件已经下载完成
  */
+import {Params,Mode,Pronunciation} from '../beans/Params'
 
 //TTS API的请求路径
-const ttsApi: string = "https://dict.youdao.com/dictvoice"
+const ttsApi: string = "https://dict.youdao.com/dictvoice?le=auto"
 
 //将Word2Mp3类暴露出来，给其它模块使用
 export class Word2Mp3{
 
   private count:number = 0//用来计数，表示成功下载音频文件的个数，可以用在计算进度上
   private paths:string[] = []//用来保存音频文件的临时路径
+  private rate:number
+  private type:number
+  private random:boolean
 
   //构造函数，仅初始化各属性
-  constructor(){
+  constructor(params:Params){
     this.count = 0
     this.paths = []
+    this.rate = params.getSpeed()
+    this.random = false
+    this.type = 1
+    if(params.getMode()===Mode.RANDOM){
+      this.random = true
+    }
+    if(params.getPron()===Pronunciation.AMERICAN){
+      this.type = 2
+    }
   }
 
   /**
@@ -36,6 +49,9 @@ export class Word2Mp3{
    * 要取返回的真实值，需要使用Promise的then链
    */
   public async getFilePaths(words:string[],downloadSuccess:Function){
+    if(this.random){
+      words = this.shuffle(words)
+    }
     for(let i:number=0;i<words.length;i++){
       //对于空的字符串，不转换成音频
       if (words[i] !== null && words[i].trim() !== '') {
@@ -58,9 +74,10 @@ export class Word2Mp3{
    * 方法返回一个Promise
    */
   private getMp3FilePath(word:string,downloadSuccess:Function){
+    let that = this
       let promise:Promise<any> = new Promise((resolve,reject)=>{
         wx.downloadFile({
-          url: ttsApi + "?audio=" + word,
+          url: ttsApi + "&audio=" + word + "&rate=" + that.rate+"&type="+that.type,
           success: (res: any) => {
             this.paths.push(res.tempFilePath)
             this.count++
@@ -73,5 +90,20 @@ export class Word2Mp3{
         })
       })
       return promise
+  }
+
+  /**
+   * 随机打乱数组
+   */
+  private shuffle(words:string[]):string[]{
+    let len = words.length
+    for (let i = 0; i < len; i++) {
+      let end = len - 1
+      let index = (Math.random() * (end + 1)) >> 0
+      let t = words[end]
+      words[end] = words[index]
+      words[index] = t
+    }
+    return words
   }
 }

@@ -5,6 +5,8 @@
  * 听写的基础是能够稳定播放音频
  */
 
+import {Params} from '../beans/Params'
+
 let innerAudioContext = wx.createInnerAudioContext()
 
 export class AudioUtil{
@@ -24,17 +26,29 @@ export class AudioUtil{
   private error:Function
   //播放完成的回调
   private end:Function
-
+  //播放参数
+  private repeat:number
+  private pause:number
+  private interval:number
   /**
    * 初始化各个属性
    */
-  public constructor(){
+  public constructor(params:Params){
     this.paths = []
     this.cur = 1
     this.paused = true
     this.proccess = function(){}
     this.error = function(){}
-    this.end = function(){}
+    this.end = function () { }
+    this.repeat = params.getRepeat()
+    this.pause = params.getPause()
+    this.interval = params.getInterval()
+  }
+
+  public updateParams(params: Params): void {
+    this.repeat = params.getRepeat()
+    this.pause = params.getPause()
+    this.interval = params.getInterval()
   }
 
   /**
@@ -61,21 +75,22 @@ export class AudioUtil{
   public ready():void{
     (async () => {
       this.cur = 1
+      console.log(this.repeat)
       for (let i = 0; i < this.paths.length; i++) {
         this.proccess(this.cur++)
-        for (let j = 0; j < 3; j++) {
+        for (let j = 0; j < this.repeat; j++) {
           if(!await this.playSync(this.paths[i])){
             innerAudioContext.destroy()
             innerAudioContext = wx.createInnerAudioContext()
             this.error()
             return
           }
-          if (j < 3 - 1) {
-            await this.delay(2000)
+          if (j < this.repeat - 1) {
+            await this.delay(this.interval*1000)
           }
         }
         if (i < this.paths.length - 1) {
-          await this.delay(3000)
+          await this.delay(this.pause*1000)
         }
       }
       innerAudioContext.stop()
