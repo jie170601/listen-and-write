@@ -3,7 +3,7 @@ export interface Thenable<R> {
   then<U>(onFulfilled?: (value: R) => U | Thenable<U>, onRejected?: (error: any) => void): Thenable<U>;
 }
 
-export class Promise<R> implements Thenable<R> {
+declare class Promise<R> implements Thenable<R> {
   /**
    * If you call resolve in the body of the callback passed to the constructor,
    * your promise is fulfilled with result object passed to resolve.

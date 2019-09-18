@@ -6,7 +6,7 @@
  */
 
 import { Params } from '../beans/Params'
-import {Promise} from './promise/lib/Promise'
+const Promise =  require('./es6-promise.min')
 
 let innerAudioContext = wx.createInnerAudioContext()
 
